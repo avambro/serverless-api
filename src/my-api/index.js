@@ -1,7 +1,7 @@
 exports.handler = async event => {
     if(event.httpMethod === 'GET'){
         let data = getData(event);
-        return Response(data);
+        return response(data);
     }
 }
 
@@ -14,22 +14,21 @@ const getData = event =>{
 
 
 const data = {
-    John: { age:26, job: "builder"},
-    Claude: { age: 19, job: "Teacher" },
-    Damme: { age: 33, job: "builder Supervisor" },
-    Marcus: { age: 36, job: "Photographer" },
-}
+  Jean: { year: 1988, movie: "Bloodsport" },
+  Claude: { year: 1989, movie: "Kickboxer" },
+  Van: { year: 1990, movie: "Hard Target" },
+  Damme: { year: 1993, movie: "Double Impact" }
+};
 
 
 const response = data => {
     return {
-        Headers: {
-            'Content Type' : 'application/json',
+        headers: {
+            'Content-Type' : 'application/json',
             'Access-Control-Allow-Methods':'*',
             'Access-Control-Allow-Origin':'*'
         },
         statusCode: 200,
         body : JSON.stringify(data)
-
     }
 }
